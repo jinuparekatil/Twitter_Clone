@@ -14,6 +14,7 @@
 		7691E6CD2C1C6E86004A92C2 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691E6CC2C1C6E86004A92C2 /* SearchBar.swift */; };
 		76AE719E2C1D40A200E0938E /* SearchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE719D2C1D40A200E0938E /* SearchUserCell.swift */; };
 		76AE71A02C1D469300E0938E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE719F2C1D469300E0938E /* Extensions.swift */; };
+		76AE71A22C1D5A9300E0938E /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE71A12C1D5A9200E0938E /* NotificationCell.swift */; };
 		76B25A522C1B2BAE005D5832 /* Twitter_CloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B25A512C1B2BAE005D5832 /* Twitter_CloneApp.swift */; };
 		76B25A542C1B2BAE005D5832 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B25A532C1B2BAE005D5832 /* ContentView.swift */; };
 		76B25A562C1B2BB1005D5832 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76B25A552C1B2BB1005D5832 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		7691E6CC2C1C6E86004A92C2 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		76AE719D2C1D40A200E0938E /* SearchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserCell.swift; sourceTree = "<group>"; };
 		76AE719F2C1D469300E0938E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		76AE71A12C1D5A9200E0938E /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		76B25A4E2C1B2BAE005D5832 /* Twitter_Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter_Clone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76B25A512C1B2BAE005D5832 /* Twitter_CloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Twitter_CloneApp.swift; sourceTree = "<group>"; };
 		76B25A532C1B2BAE005D5832 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				76B25A742C1B3104005D5832 /* NotificationsView.swift */,
+				76AE71A12C1D5A9200E0938E /* NotificationCell.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				7691E6C72C1BE742004A92C2 /* MultilineTextField.swift in Sources */,
 				76B25A522C1B2BAE005D5832 /* Twitter_CloneApp.swift in Sources */,
 				76B25A752C1B3104005D5832 /* NotificationsView.swift in Sources */,
+				76AE71A22C1D5A9300E0938E /* NotificationCell.swift in Sources */,
 				76AE71A02C1D469300E0938E /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
