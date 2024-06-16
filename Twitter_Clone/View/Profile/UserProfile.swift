@@ -25,7 +25,7 @@ struct UserProfile: View {
                             Image("banner")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: UIScreen.main.bounds.width, height: minY > 0 ? 0 : 180 + minY,alignment: .center)
+                            .frame(width: UIScreen.main.bounds.width, height: minY > 0 ? 180 + minY : 180,alignment: .center)
                         .clipShape(RoundedRectangle(cornerRadius: 0))
                             
                             BlurView()
@@ -48,6 +48,57 @@ struct UserProfile: View {
                 }
                 .frame(height: 180)
                 .zIndex(1)
+                
+                VStack{
+                    HStack {
+                        Image("logo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 75,height: 75)
+                            .clipShape(Circle())
+                            .padding(8)
+                            .background(Color.white)
+                            .offset(y: offset < 0 ? getOffset()-20 : -20)
+                            .scaleEffect(getScale())
+                        Spacer()
+                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                            Text("Edit Profile")
+                                .foregroundStyle(.blue)
+                                .padding(.vertical,10)
+                                .padding(.horizontal)
+                                .background(
+                                 Capsule()
+                                    .stroke(Color.blue,lineWidth: 1.5))
+                        })
+                    }
+                    .padding(.top, -25)
+                    .padding(.bottom, -10)
+                    VStack(alignment: .leading,spacing: 8, content: {
+                        Text("Jinu")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.primary)
+                        Text("@jnujoy")
+                            .foregroundStyle(.gray)
+                        
+                        Text("I don't know what I don't know . So, I try to figure out what I don't know. ")
+                        
+                        HStack(spacing: 5, content: {
+                            Text("13")
+                                .foregroundStyle(.primary)
+                                .fontWeight(.semibold)
+                            Text("Followers")
+                                .foregroundStyle(.gray)
+                            Text("680")
+                                .foregroundStyle(.primary)
+                                .fontWeight(.semibold)
+                                .padding(.leading,20)
+                            Text("Following")
+                                .foregroundStyle(.gray)
+
+                        })
+                    })
+                }
             })
         }
     }
@@ -62,7 +113,17 @@ struct UserProfile: View {
         let offset = 60 * (progress > 0 && progress <= 1 ? progress : 1)
         return offset
     }
+    func getOffset() -> CGFloat {
+        let progress = (-offset / 80) * 20
+        return progress <= 20 ? progress : 20
+    }
+    func getScale() -> CGFloat {
+        let progress = -offset / 80
+        let scale = 1.8 - (progress < 1.0 ? progress : 1)
+        return scale < 1 ? scale : 1
+    }
 }
+    
 
 #Preview {
     UserProfile()
