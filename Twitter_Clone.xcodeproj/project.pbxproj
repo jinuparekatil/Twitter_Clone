@@ -37,6 +37,7 @@
 		76B4ED312C1EFCB800EA530A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B4ED302C1EFCB800EA530A /* RegisterView.swift */; };
 		76B4ED332C1EFDFC00EA530A /* CustomAuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B4ED322C1EFDFC00EA530A /* CustomAuthTextField.swift */; };
 		76B4ED352C1F215300EA530A /* SecureAuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B4ED342C1F215300EA530A /* SecureAuthTextField.swift */; };
+		76B4ED372C1F252700EA530A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B4ED362C1F252700EA530A /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		76B4ED302C1EFCB800EA530A /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		76B4ED322C1EFDFC00EA530A /* CustomAuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthTextField.swift; sourceTree = "<group>"; };
 		76B4ED342C1F215300EA530A /* SecureAuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureAuthTextField.swift; sourceTree = "<group>"; };
+		76B4ED362C1F252700EA530A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 			children = (
 				76B4ED2E2C1EE59700EA530A /* WelcomeView.swift */,
 				76B4ED302C1EFCB800EA530A /* RegisterView.swift */,
+				76B4ED362C1F252700EA530A /* LoginView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7691E6C92C1C4251004A92C2 /* TweetCellView.swift in Sources */,
+				76B4ED372C1F252700EA530A /* LoginView.swift in Sources */,
 				76AE71A82C1D89DF00E0938E /* MainView.swift in Sources */,
 				76B4ED2B2C1E9FAB00EA530A /* BlurView.swift in Sources */,
 				76AE71AE2C1D959A00E0938E /* MenuButton.swift in Sources */,
