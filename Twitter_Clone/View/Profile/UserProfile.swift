@@ -10,6 +10,9 @@ import SwiftUI
 struct UserProfile: View {
     @State var offset: CGFloat = 0
     @State var titleOffset: CGFloat = 0
+    @State var currentTab = "Tweets"
+    @State var tabBarOffset : CGFloat = 0
+    @Namespace var animation
     var body: some View {
         ScrollView(.vertical,showsIndicators: false) {
             VStack(spacing: 15, content: {
@@ -58,6 +61,7 @@ struct UserProfile: View {
                             .clipShape(Circle())
                             .padding(8)
                             .background(Color.white)
+                            .clipShape(Circle())
                             .offset(y: offset < 0 ? getOffset()-20 : -20)
                             .scaleEffect(getScale())
                         Spacer()
@@ -98,6 +102,42 @@ struct UserProfile: View {
 
                         })
                     })
+                    .overlay(
+                        GeometryReader { proxy -> Color in
+                            
+                            let minY = proxy.frame(in: .global).minY
+                            DispatchQueue.main.async {
+                                
+                                self.titleOffset = minY
+                            }
+                            return Color.clear
+                        }
+                            .frame(width: 0,height: 0),alignment: .top )
+                    VStack(spacing: 0, content: {
+                        ScrollView(.horizontal,showsIndicators: false) {
+                            HStack(spacing: 0, content: {
+                                TabButtons(title: "Tweets", currentTab: $currentTab, animation: animation)
+                                TabButtons(title: "Tweets & Likes", currentTab: $currentTab, animation: animation)
+                                TabButtons(title: "Media", currentTab: $currentTab, animation: animation)
+                                TabButtons(title: "Likes", currentTab: $currentTab, animation: animation)
+                            })
+                        }
+                        Divider()
+                    })
+                    .padding(.top,30)
+                    .background(Color.white)
+                    .offset(y: tabBarOffset < 90 ? -tabBarOffset + 90 : 0)
+                    .overlay(
+                        GeometryReader {  proxy -> Color in
+                            let minY = proxy.frame(in: .global).minY
+                            DispatchQueue.main.async{
+                                self.tabBarOffset = minY
+                            }
+                            return Color.clear
+                        }
+                            .frame(width: 0,height: 0),alignment: .top
+                    )
+                    .zIndex(1.0)
                 }
             })
         }

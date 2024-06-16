@@ -32,6 +32,7 @@
 		76B25A772C1B3110005D5832 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B25A762C1B3110005D5832 /* MessagesView.swift */; };
 		76B4ED272C1E9D0900EA530A /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B4ED262C1E9D0900EA530A /* UserProfile.swift */; };
 		76B4ED2B2C1E9FAB00EA530A /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B4ED2A2C1E9FAB00EA530A /* BlurView.swift */; };
+		76B4ED2D2C1EBED700EA530A /* TabButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B4ED2C2C1EBED600EA530A /* TabButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		76B25A762C1B3110005D5832 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		76B4ED262C1E9D0900EA530A /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		76B4ED2A2C1E9FAB00EA530A /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		76B4ED2C2C1EBED600EA530A /* TabButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				76AE71AB2C1D8ED800E0938E /* FollowView.swift */,
 				7691E6CC2C1C6E86004A92C2 /* SearchBar.swift */,
 				76AE71AD2C1D959A00E0938E /* MenuButton.swift */,
+				76B4ED2C2C1EBED600EA530A /* TabButtons.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				7691E6CB2C1C6CBB004A92C2 /* Search Cell.swift in Sources */,
 				76AE71AA2C1D8D4000E0938E /* SlideMenu.swift in Sources */,
 				76B25A732C1B30EA005D5832 /* SearchView.swift in Sources */,
+				76B4ED2D2C1EBED700EA530A /* TabButtons.swift in Sources */,
 				76AE719E2C1D40A200E0938E /* SearchUserCell.swift in Sources */,
 				76B25A712C1B30D8005D5832 /* FeedView.swift in Sources */,
 				7691E6CD2C1C6E86004A92C2 /* SearchBar.swift in Sources */,
