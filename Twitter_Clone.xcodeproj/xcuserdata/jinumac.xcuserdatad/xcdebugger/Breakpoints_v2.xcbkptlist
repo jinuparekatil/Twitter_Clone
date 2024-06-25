@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "8805A52F-AC0C-44E9-9A4B-9572C946D828"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0A45029E-643B-49A3-AA6F-E28DFFE671CA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Twitter_Clone/Services/RequestServices.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "postTweet(text:user:username:userId:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "818E9947-501C-4C4C-A126-D66F06CB1599"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Twitter_Clone/ViewModel/Post Tweet/CreateTweetViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "uploadPost(text:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "818E9947-501C-4C4C-A126-D66F06CB1599 - 59fcc3e723c1d288"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Twitter_Clone.CreateTweetViewModel.uploadPost(text: Swift.String) -&gt; ()"
+                  moduleName = "Twitter_Clone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jinumac/Documents/Fullstack%20Twitter/Twitter_Clone/Twitter_Clone/ViewModel/Post%20Tweet/CreateTweetViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18">
+               </Location>
+               <Location
+                  uuid = "818E9947-501C-4C4C-A126-D66F06CB1599 - 588e97736202888b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; () in Twitter_Clone.CreateTweetViewModel.uploadPost(text: Swift.String) -&gt; ()"
+                  moduleName = "Twitter_Clone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jinumac/Documents/Fullstack%20Twitter/Twitter_Clone/Twitter_Clone/ViewModel/Post%20Tweet/CreateTweetViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B478C6E3-CFD4-49EE-9734-AE375AB72ECB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Twitter_Clone/View/Post/CreateTweetView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

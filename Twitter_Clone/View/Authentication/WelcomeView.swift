@@ -8,124 +8,146 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    @EnvironmentObject var viewModel: AuthViewModel
+    @State var width = UIScreen.main.bounds.width
+    
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
                 HStack {
                     Spacer(minLength: 0)
+                    
                     Image("Twitter")
                         .resizable()
                         .scaledToFill()
                         .padding(.trailing)
-                        .frame(width: 20,height: 20)
+                        .frame(width: 20, height: 20)
+                    
                     Spacer(minLength: 0)
                 }
                 Spacer(minLength: 0)
+                
                 Text("See what's happening in the world right now.")
-                    .font(.system(size: 30, weight: .heavy,design: .default))
-                    .frame(width: (getRect().width*0.9),alignment: .center)
+                    .font(.system(size: 30, weight: .heavy, design: .default))
+                    .frame(width: (width * 0.9), alignment: .center)
+                
+                
                 Spacer(minLength: 0)
-                VStack(alignment: .center,spacing: 10, content: {
+                
+                //Buttons
+                
+                VStack(alignment: .center, spacing: 10, content: {
                     Button(action: {
-                        print("Signin with google")
-                    }, label: {
-                        HStack(spacing: nil, content: {
+                        print("Hello button tapped!")
+                        
+                    }) {
+                        HStack(spacing: -4) {
+                            
                             Image("google")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 25,height: 25)
+                                .frame(width: 25, height: 25)
+                            
                             Text("Continue with Google")
                                 .fontWeight(.bold)
                                 .font(.title3)
-                                .foregroundStyle(.black)
+                                .foregroundColor(.black)
                                 .padding()
-                        })
+                        }
                         .overlay(
-                        RoundedRectangle(cornerRadius: 36 )
-                            .stroke(.black,lineWidth: 1)
-                            .opacity(0.3)
-                            .frame(width: 320,height: 60,alignment: .center)
+                            RoundedRectangle(cornerRadius: 36)
+                                .stroke(Color.black, lineWidth: 1)
+                                .opacity(0.3)
+                                .frame(width: 320, height: 60, alignment: .center)
                         )
-                    })
+                        
+                    }
+                    
                     
                     Button(action: {
-                        print("Signin with Apple")
-                    }, label: {
-                        HStack(spacing: nil, content: {
+                        print("Hello button tapped!")
+                        
+                    }) {
+                        HStack(spacing: -4) {
+                            
                             Image("apple")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 25,height: 25)
+                                .frame(width: 25, height: 25)
+                            
                             Text("Continue with Apple")
                                 .fontWeight(.bold)
                                 .font(.title3)
-                                .foregroundStyle(.black)
+                                .foregroundColor(.black)
                                 .padding()
-                        })
+                        }
                         .overlay(
-                        RoundedRectangle(cornerRadius: 36 )
-                            .stroke(.black,lineWidth: 1)
-                            .opacity(0.3)
-                            .frame(width: 320,height: 60,alignment: .center)
+                            RoundedRectangle(cornerRadius: 36)
+                                .stroke(Color.black, lineWidth: 1)
+                                .opacity(0.3)
+                                .frame(width: 320, height: 60, alignment: .center)
                         )
-                    })
+                        
+                    }
+                    
+                    
                     HStack {
                         Rectangle()
-                            .foregroundStyle(.gray)
+                            .foregroundColor(.gray)
                             .opacity(0.3)
-                            .frame(width: (getRect()).width * 0.35,height: 1)
+                            .frame(width: (width * 0.35), height: 1)
+
                         Text("Or")
-                            .foregroundStyle(.gray)
-                        Rectangle()
-                            .foregroundStyle(.gray)
-                            .opacity(0.3)
-                            .frame(width: (getRect()).width * 0.35,height: 1)
-                    }
-                    NavigationLink {
-                        RegisterView()
-                            .toolbar(.hidden)
-                    } label: {
-                        RoundedRectangle(cornerRadius: 36)
-                            .foregroundStyle(Color(red: 29/255, green: 161/255, blue: 242/255))
-                            .frame(width: 320,height: 60,alignment: .center)
-                            .overlay(
-                            Text("Create account")
-                                .fontWeight(.bold)
-                                .font(.title3)
-                                .foregroundStyle(.white)
-                                .padding()
+                            .foregroundColor(.gray)
                             
+                        Rectangle()
+                            .foregroundColor(.gray)
+                            .opacity(0.3)
+                            .frame(width: (width * 0.35), height: 1)
+                    }
+                    
+                    
+                    NavigationLink(destination: RegisterView().navigationBarHidden(true)) {
+                        RoundedRectangle(cornerRadius: 36)
+                            .foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255))
+                            .frame(width: 320, height: 60, alignment: .center)
+                            .overlay(Text("Create account")
+                                        .fontWeight(.bold)
+                                        .font(.title3)
+                                        .foregroundColor(.white)
+                                        .padding()
                             )
                     }
-
+                    
+                    
                 })
                 .padding()
                 
-                VStack(alignment: .leading, content: {
+                //Bottom Buttons
+                
+                VStack(alignment: .leading) {
                     VStack {
-                        Text("By signing up, you agree to our ") + Text("Terms")
-                            .foregroundStyle(Color(red: 29/255, green: 161/255, blue: 242/255)) + Text(",") + Text(" Privacy Policy").foregroundStyle(Color(red: 29/255, green: 161/255, blue: 242/255)) + Text(",") + Text(" Cookie Use").foregroundStyle(Color(red: 29/255, green: 161/255, blue: 242/255))
-                    }
-                    .padding(.bottom)
+                        Text("By signing up, you agree to our ") + Text("Terms").foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255)) + Text(",") + Text(" Privacy Policy").foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255)) + Text(", and Cookie Use.")
+                    }.padding(.bottom)
                     
-                    HStack(spacing: 2, content: {
+                    HStack(spacing: 2) {
                         Text("Have an account already? ")
-                        NavigationLink {
-                            LoginView()
-                                .toolbar(.hidden)
-                        } label: {
-                            Text("Log in").foregroundStyle(Color(red: 29/255, green: 161/255, blue: 242/255))
+                        NavigationLink(destination: LoginView()
+                            .navigationBarHidden(true)) {
+                            Text("Log in")
+                                .foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255))
                         }
                         
-
-                    })
-                })
+                    }
+                }
+                
+                
+                
             }
         }
-        .toolbar(.hidden)
-        .navigationTitle("")
     }
 }
+
 
 #Preview {
     WelcomeView()

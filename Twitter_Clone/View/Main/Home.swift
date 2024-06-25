@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Home: View {
+    @Binding var x: CGFloat
+
     @State var selectedIndex = 0
     @State var showCreateTweet = false
     @State var text = ""
@@ -113,6 +115,4 @@ struct Home: View {
     }
 }
 
-#Preview {
-    Home()
-}
+

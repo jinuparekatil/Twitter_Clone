@@ -8,62 +8,74 @@
 import SwiftUI
 
 struct RegisterView: View {
+    @EnvironmentObject var viewModel: AuthViewModel
+    @Environment(\.presentationMode) private var presentationMode // For iOS < 15.0
+
     @State var name = ""
     @State var email = ""
     @State var password = ""
-    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
             ZStack {
+                
                 HStack {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text("Cancel")
-                            .foregroundStyle(.blue)
+                            .foregroundColor(.blue)
                     })
+                        
                     Spacer()
                 }
                 .padding(.horizontal)
+                
                 Image("Twitter")
                     .resizable()
                     .scaledToFill()
                     .padding(.trailing)
-                    .frame(width: 20,height: 20)
+                    .frame(width: 20, height: 20)
             }
+            
             Text("Create your account")
                 .font(.title)
                 .bold()
-                .padding(.top,35)
+                .padding(.top, 35)
             
-            VStack(alignment: .leading,spacing: nil, content: {
+            VStack(alignment: .leading) {
                 CustomAuthTextField(placeHolder: "Name", text: $name)
-                CustomAuthTextField(placeHolder: "Phone number or email", text: $email)
-                SecureAuthTextField(placeHolder: "Password", text: $password)
-            })
+                CustomAuthTextField(placeHolder: "Phone number or email address", text: $email)
+                CustomAuthTextField(placeHolder: "Password", text: $password)
+            }
             
             Spacer(minLength: 0)
             
-            VStack{
+            VStack {
+                
                 Rectangle()
                     .frame(height: 1)
-                    .foregroundStyle(.gray)
+                    .foregroundColor(.gray)
+                
                 HStack {
+                    
+                    
                     Spacer()
+                    
                     Button(action: {
-                        
+                        self.viewModel.register(name: name, email: email, username: name, password: password)
                     }, label: {
                         Capsule()
-                            .frame(width: 60,height: 30,alignment: .center)
-                            .foregroundStyle(Color(red: 29/255, green: 161/255, blue: 242/255))
+                            .frame(width: 60, height: 30, alignment: .center)
+                            .foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255))
                             .overlay(
-                                Text("Text")
-                                    .foregroundStyle(.white)
+                                Text("Next")
+                                    .foregroundColor(.white)
                             )
+                        
                     })
+                    .padding(.trailing, 24)
                 }
-                .padding(.trailing,24)
             }
         }
     }
