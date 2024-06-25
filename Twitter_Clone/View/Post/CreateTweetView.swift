@@ -11,6 +11,12 @@ struct CreateTweetView: View {
     @State var text = ""
     
     @ObservedObject var viewmodel = CreateTweetViewModel()
+    
+//    @Binding var show: Bool
+    @State var imagePickerPresented = false
+    @State var selectedImage: UIImage?
+    @State var postImage: Image?
+    @State var width = UIScreen.main.bounds.width
     var body: some View {
         VStack {
             HStack {
@@ -34,8 +40,48 @@ struct CreateTweetView: View {
                 
             }
             MultilineTextField(text: $text)
+            
+            if postImage == nil {
+                
+                Button(action: {
+                    self.imagePickerPresented.toggle()
+                }, label: {
+                    Image(systemName: "plus.circle")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 70,height: 70)
+                        .padding(.top)
+                        .foregroundStyle(.black)
+                })
+                .sheet(isPresented: $imagePickerPresented){
+                    loadImage()
+                } content: {
+                    ImagePicker(image: $selectedImage )
+                }
+            }
+           else if let image = postImage {
+                VStack {
+                    HStack(alignment: .top, content: {
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .padding(.horizontal)
+                            .frame(width: width * 0.9)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                            .clipped()
+                    })
+                    Spacer()
+                }
+            }
         }
         .padding()
+    }
+}
+extension CreateTweetView {
+    func loadImage() {
+        guard let selectedImage = selectedImage else { return }
+        
+        postImage = Image(uiImage: selectedImage)
     }
 }
 
