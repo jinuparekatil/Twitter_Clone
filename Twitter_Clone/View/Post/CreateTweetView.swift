@@ -27,7 +27,7 @@ struct CreateTweetView: View {
                 Button(action: {
                     if text != "" {
                         
-                        self.viewmodel.uploadPost(text: text)
+                        self.viewmodel.uploadPost(text: text, image: selectedImage)
                     }
                 }, label: {
                     Text("Tweet")

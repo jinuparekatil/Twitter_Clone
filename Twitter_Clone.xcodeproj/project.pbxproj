@@ -19,6 +19,7 @@
 		76ACABA72C2A939B00913352 /* CreateTweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ACABA62C2A939B00913352 /* CreateTweetViewModel.swift */; };
 		76ACABA92C2A95D700913352 /* RequestServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ACABA82C2A95D700913352 /* RequestServices.swift */; };
 		76ACABAB2C2ABB8900913352 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ACABAA2C2ABB8900913352 /* ImagePicker.swift */; };
+		76ACABAD2C2AF04F00913352 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ACABAC2C2AF04F00913352 /* ImageUploader.swift */; };
 		76AE719E2C1D40A200E0938E /* SearchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE719D2C1D40A200E0938E /* SearchUserCell.swift */; };
 		76AE71A02C1D469300E0938E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE719F2C1D469300E0938E /* Extensions.swift */; };
 		76AE71A22C1D5A9300E0938E /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE71A12C1D5A9200E0938E /* NotificationCell.swift */; };
@@ -60,6 +61,7 @@
 		76ACABA62C2A939B00913352 /* CreateTweetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTweetViewModel.swift; sourceTree = "<group>"; };
 		76ACABA82C2A95D700913352 /* RequestServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestServices.swift; sourceTree = "<group>"; };
 		76ACABAA2C2ABB8900913352 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		76ACABAC2C2AF04F00913352 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		76AE719D2C1D40A200E0938E /* SearchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserCell.swift; sourceTree = "<group>"; };
 		76AE719F2C1D469300E0938E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		76AE71A12C1D5A9200E0938E /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				76ACAB9C2C2A902E00913352 /* AuthServices.swift */,
 				76ACABA82C2A95D700913352 /* RequestServices.swift */,
+				76ACABAC2C2AF04F00913352 /* ImageUploader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				76B25A522C1B2BAE005D5832 /* Twitter_CloneApp.swift in Sources */,
 				76ACABA72C2A939B00913352 /* CreateTweetViewModel.swift in Sources */,
 				76B25A752C1B3104005D5832 /* NotificationsView.swift in Sources */,
+				76ACABAD2C2AF04F00913352 /* ImageUploader.swift in Sources */,
 				76AE71A22C1D5A9300E0938E /* NotificationCell.swift in Sources */,
 				76AE71A02C1D469300E0938E /* Extensions.swift in Sources */,
 			);
