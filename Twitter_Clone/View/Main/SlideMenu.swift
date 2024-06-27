@@ -7,10 +7,14 @@
 
 import SwiftUI
 
+
+var menuButtons  = ["Profile","Lists","Topics","Bookmarks","Moments"]
+
 struct SlideMenu: View {
-    @State var show = false
+   
+    @ObservedObject var viewModel : AuthViewModel
     
-    var menuButtons  = ["Profile","Lists","Topics","Bookmarks","Moments"]
+    @State var show = false
  
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
   
@@ -20,17 +24,22 @@ struct SlideMenu: View {
         VStack {
             HStack(spacing: 0, content: {
                 VStack(alignment: .leading, content: {
-                    Image("logo")
-                        .resizable()
-                        .frame(width: 60,height: 60)
-                        .clipShape(Circle())
+                    NavigationLink(destination: UserProfile(user: viewModel.currentUser!)) {
+                        
+                        Image("logo")
+                            .resizable()
+                            .frame(width: 60,height: 60)
+                            .clipShape(Circle())
+                    }
                     HStack(alignment: .top,spacing: 12, content: {
                         VStack(alignment: .leading,spacing: 12, content: {
-                            Text("Jinu")
-                                .font(.title3)
-                                .fontWeight(.bold)
+                            NavigationLink(destination: UserProfile(user: viewModel.currentUser!)) {
+                                Text(viewModel.currentUser?.name ?? "")
+                                    .font(.title3)
+                                    .fontWeight(.bold)
                                 .foregroundStyle(.black)
-                            Text("@jinu_joy")
+                            }
+                            Text("@\(viewModel.currentUser?.username ?? "")")
                                 .foregroundStyle(.gray)
                             
                             HStack(spacing: 20, content: {
@@ -41,6 +50,7 @@ struct SlideMenu: View {
                             Divider()
                                 .padding(.top,10)
                         })
+                        
                         Spacer(minLength: 0)
                         Button(action: {
                             withAnimation {
@@ -128,5 +138,5 @@ struct SlideMenu: View {
 }
 
 #Preview {
-    SlideMenu()
+    SlideMenu(viewModel: AuthViewModel.shared)
 }
