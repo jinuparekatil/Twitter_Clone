@@ -16,6 +16,6 @@ struct Tweet: Identifiable, Decodable {
     
     let text: String
     let userId: String
-    let usename: String
+    let userName: String
     let user: String
 }

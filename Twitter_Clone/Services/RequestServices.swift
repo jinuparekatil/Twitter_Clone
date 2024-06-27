@@ -9,13 +9,13 @@ import Foundation
 
 public class RequestServices {
     
-    public static var reqestDomain = ""
+    public static var requestDomain = ""
     
     public static func postTweet(text: String,user: String ,username: String, userId: String, completion: @escaping(_ result: [String : Any]?)-> Void) {
         
         let params = ["text": text, "userId": userId, "user": user, "username": username] as [String: Any]
         
-        let url = URL(string: reqestDomain)!
+        let url = URL(string: requestDomain)!
         
         let session = URLSession.shared
         
@@ -53,6 +53,32 @@ public class RequestServices {
             }
         }
         
+        task.resume()
+    }
+    
+    static func fetchTweets(completion: @escaping(_ result: Result<Data?, NetworkError>) -> Void) {
+        let url = URL(string: requestDomain)!
+        
+        let session = URLSession.shared
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "GET"
+        
+        request.addValue("Application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Application/json", forHTTPHeaderField: "Accept")
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            guard let data = data else { return }
+            
+            completion(.success(data))
+
+        }
         task.resume()
     }
 }

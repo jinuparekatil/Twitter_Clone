@@ -25,7 +25,7 @@ struct MainView: View {
                     VStack {
                         TopBar(x: $x)
                         
-                        Home(x: $x)
+                        Home(x: $x, user: user)
                         
                     }
                     

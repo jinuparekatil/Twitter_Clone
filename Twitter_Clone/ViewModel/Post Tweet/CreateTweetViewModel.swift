@@ -13,7 +13,7 @@ class CreateTweetViewModel: ObservableObject {
             
         guard let user =  AuthViewModel.shared.currentUser else { return }
         
-        RequestServices.reqestDomain = "http://localhost:3000/tweets"
+        RequestServices.requestDomain = "http://localhost:3000/tweets"
         
         RequestServices.postTweet(text: text, user: user.name, username: user.username, userId: user.id) { result in
             if let image = image {
