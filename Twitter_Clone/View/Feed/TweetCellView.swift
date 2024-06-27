@@ -6,10 +6,18 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct TweetCellView: View {
-    var tweet: String
-    var tweetImage: String?
+//    var tweet: String
+//    var tweetImage: String?
+
+    @ObservedObject var viewModel: TweetCellViewModel
+    
+    init(viewModel: TweetCellViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
         VStack {
             HStack(alignment: .top
@@ -21,27 +29,32 @@ struct TweetCellView: View {
                     .clipShape(Circle())
                 VStack(alignment: .leading,spacing: 10, content: { 
                     (
-                    Text("Jinu ")
+                        Text(self.viewModel.tweet.user)
                         .fontWeight(.bold)
                         .foregroundStyle(.primary)
                     +
-                    Text("@jinu_joy")
+                    Text(self.viewModel.tweet.userName)
                         .foregroundStyle(.gray)
                     )
                     
-                    Text(tweet)
+                    Text(self.viewModel.tweet.text)
                         .frame(maxHeight: 100,alignment: .top)
-                    if let image = tweetImage {
-                        GeometryReader { proxy in
-                            Image(image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: proxy.frame(in: .global).width,height: 250)
-                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                  
+                     let imageId = viewModel.tweet.id
+                        if viewModel.tweet.image == "true" {
+                            GeometryReader{ proxy in
+                                KFImage(URL(string: "http://localhost:3000/tweets/\(imageId)/image"))
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: proxy.frame(in: .global).width,height: 250)
+                                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                            }
+                            .frame(height: 250)
                         }
-                        .frame(height: 250)
-                    }
+                    
+                    
                 })
+                Spacer()
             })
             //Cell Bottom
             HStack(spacing: 50, content: {
@@ -76,8 +89,8 @@ struct TweetCellView: View {
     }
 }
 
-#Preview {
-    TweetCellView(tweet: sampleText)
-}
+//#Preview {
+//    TweetCellView(viewModel: sampleText)
+//}
 
 var sampleText = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."

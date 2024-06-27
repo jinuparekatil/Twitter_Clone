@@ -17,7 +17,7 @@ struct FeedView: View {
             LazyVStack(spacing: 18, content: {
                 ForEach(viewModel.tweets) { tweet in
                     
-                    TweetCellView(tweet: tweet.text)
+                    TweetCellView(viewModel: TweetCellViewModel(tweet: tweet))
                     
                     Divider()
                 }

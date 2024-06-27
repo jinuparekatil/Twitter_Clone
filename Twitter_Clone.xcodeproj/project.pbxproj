@@ -47,6 +47,8 @@
 		76B4ED352C1F215300EA530A /* SecureAuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B4ED342C1F215300EA530A /* SecureAuthTextField.swift */; };
 		76B4ED372C1F252700EA530A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B4ED362C1F252700EA530A /* LoginView.swift */; };
 		76D68ECA2C2D29B7006F0985 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D68EC92C2D29B7006F0985 /* FeedViewModel.swift */; };
+		76D68ECD2C2D4546006F0985 /* TweetCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D68ECC2C2D4546006F0985 /* TweetCellViewModel.swift */; };
+		76D68ED02C2D5678006F0985 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 76D68ECF2C2D5678006F0985 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,7 @@
 		76B4ED342C1F215300EA530A /* SecureAuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureAuthTextField.swift; sourceTree = "<group>"; };
 		76B4ED362C1F252700EA530A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		76D68EC92C2D29B7006F0985 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		76D68ECC2C2D4546006F0985 /* TweetCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D68ED02C2D5678006F0985 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				76D68EC92C2D29B7006F0985 /* FeedViewModel.swift */,
+				76D68ECC2C2D4546006F0985 /* TweetCellViewModel.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -329,6 +334,9 @@
 			dependencies = (
 			);
 			name = Twitter_Clone;
+			packageProductDependencies = (
+				76D68ECF2C2D5678006F0985 /* Kingfisher */,
+			);
 			productName = Twitter_Clone;
 			productReference = 76B25A4E2C1B2BAE005D5832 /* Twitter_Clone.app */;
 			productType = "com.apple.product-type.application";
@@ -357,6 +365,9 @@
 				Base,
 			);
 			mainGroup = 76B25A452C1B2BAE005D5832;
+			packageReferences = (
+				76D68ECE2C2D5678006F0985 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 76B25A4F2C1B2BAE005D5832 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -419,6 +430,7 @@
 				76ACABA72C2A939B00913352 /* CreateTweetViewModel.swift in Sources */,
 				76B25A752C1B3104005D5832 /* NotificationsView.swift in Sources */,
 				76ACABAD2C2AF04F00913352 /* ImageUploader.swift in Sources */,
+				76D68ECD2C2D4546006F0985 /* TweetCellViewModel.swift in Sources */,
 				76AE71A22C1D5A9300E0938E /* NotificationCell.swift in Sources */,
 				76AE71A02C1D469300E0938E /* Extensions.swift in Sources */,
 			);
@@ -639,6 +651,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		76D68ECE2C2D5678006F0985 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		76D68ECF2C2D5678006F0985 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76D68ECE2C2D5678006F0985 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 76B25A462C1B2BAE005D5832 /* Project object */;
 }

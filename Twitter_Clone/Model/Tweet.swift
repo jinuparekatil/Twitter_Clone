@@ -18,4 +18,5 @@ struct Tweet: Identifiable, Decodable {
     let userId: String
     let userName: String
     let user: String
+    let image: String?
 }

@@ -139,15 +139,15 @@ struct UserProfile: View {
                     )
                     .zIndex(1.0)
                     
-                    VStack(spacing: 18, content: {
-                        TweetCellView(tweet: "Hey Tim, are those regular glasses?", tweetImage: "post")
-                        Divider()
-                        
-                        ForEach(0..<20, id: \.self) {_ in
-                            TweetCellView(tweet: sampleText)
-                            Divider()
-                        }
-                    })
+//                    VStack(spacing: 18, content: {
+//                        TweetCellView(tweet: "Hey Tim, are those regular glasses?", tweetImage: "post")
+//                        Divider()
+//                        
+//                        ForEach(0..<20, id: \.self) {_ in
+//                            TweetCellView(tweet: sampleText)
+//                            Divider()
+//                        }
+//                    })
                     .padding(.top)
                     .zIndex(0)
 
