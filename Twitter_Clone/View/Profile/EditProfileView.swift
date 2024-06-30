@@ -184,6 +184,16 @@ struct EditProfileView: View {
             }
             Spacer()
         }
+        .onReceive(viewModel.$uploadComplete){ complete in
+            if complete {
+                self.presentationMode.wrappedValue.dismiss()
+                self.user.name = viewModel.user.name
+                self.user.website = viewModel.user.website
+                self.user.bio = viewModel.user.bio
+                self.user.location = viewModel.user.location
+                
+            }
+        }
     }
 }
 
