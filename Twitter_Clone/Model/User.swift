@@ -19,7 +19,7 @@ struct User: Decodable,Identifiable {
     }
     
     let username: String
-    let name: String
+    var name: String
     let email: String
     var location: String?
     var bio: String?
