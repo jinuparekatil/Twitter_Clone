@@ -132,7 +132,8 @@ struct WelcomeView: View {
                     
                     HStack(spacing: 2) {
                         Text("Have an account already? ")
-                        NavigationLink(destination: LoginView().navigationBarHidden(true)) {
+                        NavigationLink(destination: LoginView()
+                            .navigationBarHidden(true)) {
                             Text("Log in")
                                 .foregroundColor(Color(red: 29 / 255, green: 161 / 255, blue: 242 / 255))
                         }
