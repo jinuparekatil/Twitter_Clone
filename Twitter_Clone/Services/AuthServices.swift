@@ -121,4 +121,45 @@ public class AuthServices {
         }
         task.resume()
     }
+    
+    static func makePatchRequestWithAuth(urString: URL, reqBody: [String: Any],completion: @escaping(_ result : Result<Data?, NetworkError>) -> Void) {
+        
+        let session = URLSession.shared
+        
+        var request = URLRequest(url: urString)
+        
+        request.httpMethod = "PATCH"
+        
+        do {
+            request.httpBody  = try JSONSerialization.data(withJSONObject: reqBody,options: .prettyPrinted)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        let token = UserDefaults.standard.string(forKey: "jsonwebtoken")!
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            guard error == nil else{ return }
+            
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
+            }
+            do {
+                if let json  = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as? [String : Any]  {
+                    
+                }
+            } catch {
+                print(error.localizedDescription)
+                completion(.failure(.decodingError))
+            }
+            completion(.success(data))
+        }
+        task.resume()
+    }
 }
