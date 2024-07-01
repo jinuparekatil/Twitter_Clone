@@ -71,7 +71,11 @@ struct ImageUploader {
                     // Handle successful upload
                 } else {
                     print("Error with the response, unexpected status code: \(httpResponse.statusCode)")
-                    // Handle error based on status code
+                    print("Error with the response, unexpected status code: \(httpResponse.statusCode)")
+                               // Print response body for more insight
+                               if let data = data, let responseBody = String(data: data, encoding: .utf8) {
+                                   print("Response Body: \(responseBody)")
+                               }
                 }
             }
         }

@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Kingfisher
+
 
 struct UserProfile: View {
     let user : User
@@ -64,7 +66,14 @@ struct UserProfile: View {
                 
                 VStack{
                     HStack {
-                        Image("logo")
+                        KFImage(URL(string: "http://localhost:3000/user/\(self.viewModel.user.id)/avatar"))
+                            .placeholder {
+                                Image("blankpp")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 75,height: 75)
+                                    .clipShape(Circle())
+                            }
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 75,height: 75)
@@ -95,42 +104,77 @@ struct UserProfile: View {
                     }
                     .padding(.top, -25)
                     .padding(.bottom, -10)
-                    VStack(alignment: .leading,spacing: 8, content: {
-                        Text(user.name)
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.primary)
-                        Text("@\(user.username)")
-                            .foregroundStyle(.gray)
-                        
-                        Text("I don't know what I don't know . So, I try to figure out what I don't know. ")
-                        
-                        HStack(spacing: 5, content: {
-                            Text("13")
+                    
+                    // Profile Data
+                    HStack {
+                        VStack(alignment: .leading,spacing: 8, content: {
+                            Text(self.viewModel.user.name)
+                                .font(.title2)
+                                .fontWeight(.bold)
                                 .foregroundStyle(.primary)
-                                .fontWeight(.semibold)
-                            Text("Followers")
+                            Text("@\(self.viewModel.user.username)")
                                 .foregroundStyle(.gray)
-                            Text("680")
-                                .foregroundStyle(.primary)
-                                .fontWeight(.semibold)
-                                .padding(.leading,20)
-                            Text("Following")
-                                .foregroundStyle(.gray)
-
-                        })
-                    })
-                    .overlay(
-                        GeometryReader { proxy -> Color in
                             
-                            let minY = proxy.frame(in: .global).minY
-                            DispatchQueue.main.async {
+                            Text(self.viewModel.user.bio ?? "I don't know what I don't know . So, I try to figure out what I don't know. ")
+                            
+                            HStack(spacing: 8) {
+                                if let userLocation = self.viewModel.user.location {
+                                    if userLocation != "" {
+                                        HStack(spacing: 2) {
+                                            Image(systemName: "mappin.circle.fill")
+                                                .frame(width: 24,height: 24)
+                                                .foregroundStyle(.gray)
+                                            Text(userLocation)
+                                                .foregroundStyle(.gray)
+                                                .font(.system(size: 14))
+                                        }
+                                    }
+                                }
                                 
-                                self.titleOffset = minY
+                                if let userwebsite = self.viewModel.user.website {
+                                    if userwebsite != "" {
+                                        HStack(spacing: 2) {
+                                            Image(systemName: "link")
+                                                .frame(width: 24,height: 24)
+                                                .foregroundStyle(.gray)
+                                            Text(userwebsite)
+                                                .foregroundStyle(Color("twitter"))
+                                                .font(.system(size: 14))
+                                        }
+                                    }
+                                }
                             }
-                            return Color.clear
-                        }
-                            .frame(width: 0,height: 0),alignment: .top )
+                            HStack(spacing: 5, content: {
+                                Text("13")
+                                    .foregroundStyle(.primary)
+                                    .fontWeight(.semibold)
+                                Text("Followers")
+                                    .foregroundStyle(.gray)
+                                Text("680")
+                                    .foregroundStyle(.primary)
+                                    .fontWeight(.semibold)
+                                    .padding(.leading,20)
+                                Text("Following")
+                                    .foregroundStyle(.gray)
+
+                            })
+                            .padding(.top,8)
+                        })
+                        .padding(.leading,8)
+                        .overlay(
+                            GeometryReader { proxy -> Color in
+                                
+                                let minY = proxy.frame(in: .global).minY
+                                DispatchQueue.main.async {
+                                    
+                                    self.titleOffset = minY
+                                }
+                                return Color.clear
+                            }
+                                .frame(width: 0,height: 0),alignment: .top )
+                        Spacer()
+                    }
+                    // Custom segmented menu ..
                     VStack(spacing: 0, content: {
                         ScrollView(.horizontal,showsIndicators: false) {
                             HStack(spacing: 0, content: {
@@ -156,7 +200,11 @@ struct UserProfile: View {
                             .frame(width: 0,height: 0),alignment: .top
                     )
                     .zIndex(1.0)
-                    
+                    VStack(spacing: 18 ) {
+                        ForEach(viewModel.tweet) { tweet in
+                            TweetCellView(viewModel: TweetCellViewModel(tweet: tweet))
+                        }
+                    }
 //                    VStack(spacing: 18, content: {
 //                        TweetCellView(tweet: "Hey Tim, are those regular glasses?", tweetImage: "post")
 //                        Divider()
