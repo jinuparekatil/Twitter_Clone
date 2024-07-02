@@ -40,11 +40,11 @@ struct TweetCellView: View {
 
                 VStack(alignment: .leading,spacing: 10, content: {
                     (
-                        Text(self.viewModel.tweet.text)
+                        Text(self.viewModel.tweet.user)
                         .fontWeight(.bold)
                         .foregroundStyle(.primary)
                     +
-                    Text(self.viewModel.tweet.userName)
+                    Text("@\(self.viewModel.tweet.userName)")
                         .foregroundStyle(.gray)
                     )
                     

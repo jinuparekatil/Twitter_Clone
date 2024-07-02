@@ -7,49 +7,63 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F319CA5E-6A10-418D-B796-C6B489574FA1"
+            uuid = "DAB57167-4E02-443A-8D93-52EAFC851B3D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Twitter_Clone/Services/ImageUploader.swift"
+            filePath = "Twitter_Clone/Services/RequestServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "uploadImage(paramName:fileName:image:urlPath:)"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "postTweet(text:user:username:userId:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "768E599C-59B3-4C4E-9F60-DCEBC4626807"
+            uuid = "7B04BFC4-CE44-4F32-A266-8DA2418A1105"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Twitter_Clone/Services/ImageUploader.swift"
+            filePath = "Twitter_Clone/View/Profile/UserProfile.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "uploadImage(paramName:fileName:image:urlPath:)"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "init(user:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1A2F4522-C9B3-467B-A7B6-13EAF108CE51"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Twitter_Clone/Services/ImageUploader.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "uploadImage(paramName:fileName:image:urlPath:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7B04BFC4-CE44-4F32-A266-8DA2418A1105 - a64d97587588f689"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.zIndex(Swift.Double) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.zIndex(Swift.Double) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.zIndex(Swift.Double) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.zIndex(Swift.Double) -&gt; some&gt;&gt;.0)&gt;&gt; in Twitter_Clone.UserProfile.body.getter : some"
+                  moduleName = "Twitter_Clone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jinumac/Documents/Fullstack%20Twitter/Twitter_Clone/Twitter_Clone/View/Profile/UserProfile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32">
+               </Location>
+               <Location
+                  uuid = "7B04BFC4-CE44-4F32-A266-8DA2418A1105 - e7993d67fbdc4ab8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftUI.GeometryProxy) -&gt; SwiftUI.AnyView in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.zIndex(Swift.Double) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.zIndex(Swift.Double) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.zIndex(Swift.Double) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.zIndex(Swift.Double) -&gt; some&gt;&gt;.0)&gt;&gt; in Twitter_Clone.UserProfile.body.getter : some"
+                  moduleName = "Twitter_Clone"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jinumac/Documents/Fullstack%20Twitter/Twitter_Clone/Twitter_Clone/View/Profile/UserProfile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -12,6 +12,11 @@ import Kingfisher
 struct UserProfile: View {
     let user : User
     @ObservedObject var viewModel : ProfileViewModel
+    
+    var isCurrentUser: Bool {
+        return viewModel.user.isCurrentUser ?? false
+    }
+    
     @State var editProfileShow = false
     
     @State var offset: CGFloat = 0
@@ -23,6 +28,8 @@ struct UserProfile: View {
     init(user: User) {
         self.user = user
         self.viewModel = ProfileViewModel(user: user)
+        print("User: \(self.viewModel.user.isCurrentUser)")
+        
     }
     
     var body: some View {
@@ -84,23 +91,41 @@ struct UserProfile: View {
                             .offset(y: offset < 0 ? getOffset()-20 : -20)
                             .scaleEffect(getScale())
                         Spacer()
-                        Button(action: {
-                            editProfileShow.toggle()
-                        }, label: {
-                            Text("Edit Profile")
-                                .foregroundStyle(.blue)
-                                .padding(.vertical,10)
-                                .padding(.horizontal)
-                                .background(
-                                 Capsule()
-                                    .stroke(Color.blue,lineWidth: 1.5))
-                        })
-                        .sheet(isPresented: $editProfileShow){
-                            
-                        } content: {
-                            EditProfileView(user: $viewModel.user)
+                        if(isCurrentUser) {
+                            Button(action: {
+                                editProfileShow.toggle()
+                            }, label: {
+                                Text("Edit Profile")
+                                    .foregroundStyle(.blue)
+                                    .padding(.vertical,10)
+                                    .padding(.horizontal)
+                                    .background(
+                                     Capsule()
+                                        .stroke(Color.blue,lineWidth: 1.5))
+                            })
+                            .sheet(isPresented: $editProfileShow){
+                                
+                            } content: {
+                                EditProfileView(user: $viewModel.user)
+                            }
+
                         }
-                        
+                        else {
+                            Button(action: {
+                                //Add the function to follow and unfollow
+                            }, label: {
+                                Text("Follow")
+                                    .foregroundStyle(.white)
+                                    .padding(.vertical,10)
+                                    .padding(.horizontal)
+                                    .background(
+                                        ZStack {
+                                            Capsule()
+                                                .foregroundStyle(.black)
+                                        }
+                                    )
+                            })
+                        }
                     }
                     .padding(.top, -25)
                     .padding(.bottom, -10)
