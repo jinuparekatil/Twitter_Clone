@@ -39,4 +39,23 @@ class ProfileViewModel: ObservableObject {
             self.user.isCurrentUser = true
         }
     }
+    
+    func follow() {
+        RequestServices.requestDomain = "http://localhost:3000/users/\(self.user.id)/follow"
+        
+        RequestServices.folowingProcess(id: self.user.id) { result in
+            print(result)
+            print("Followed")
+        }
+    }
+    
+    func unfollow() {
+        RequestServices.requestDomain = "http://localhost:3000/users/\(self.user.id)/unfollow"
+        
+        RequestServices.folowingProcess(id: self.user.id) { result in
+            print(result)
+            print("Followed")
+        }
+    }
+    
 }
