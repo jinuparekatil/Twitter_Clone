@@ -29,5 +29,6 @@ struct User: Decodable,Identifiable {
     var following: [String]
     
     var isCurrentUser: Bool? = false
+    var isFollowed: Bool? = false
     
 }
