@@ -81,7 +81,9 @@ struct TweetCellView: View {
                         .frame(width: 18,height: 14)
                 })
                 .foregroundStyle(.gray)
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Button(action: {
+                    self.viewModel.like()
+                }, label: {
                     Image("love")
                         .resizable()
                         .frame(width: 18,height: 15)

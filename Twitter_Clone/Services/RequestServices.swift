@@ -148,4 +148,77 @@ public class RequestServices {
            
            task.resume()
     }
+    
+    public static func likeTweet(id: String, completion: @escaping (_ result: [String: Any]?) -> Void) {
+       
+        guard let url = URL(string: requestDomain) else {
+            print("Invalid URL")
+            completion(nil)
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        
+        guard let token = UserDefaults.standard.string(forKey: "jsonwebtoken") else {
+            print("No token found")
+            completion(nil)
+            return
+        }
+        
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error in data task: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            
+            guard let data = data else {
+                print("No data received")
+                completion(nil)
+                return
+            }
+            
+            // Log the raw response data
+            if let rawResponseString = String(data: data, encoding: .utf8) {
+                print("Raw response data: \(rawResponseString)")
+            }
+            
+            // Log the response object
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Response status code: \(httpResponse.statusCode)")
+                if httpResponse.statusCode != 200 {
+                    print("Error: Unexpected status code \(httpResponse.statusCode)")
+                    completion(nil)
+                    return
+                }
+            }
+            
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                    DispatchQueue.main.async {
+                        completion(json)
+                    }
+                } else {
+                    print("JSON data is not a dictionary")
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                }
+            } catch {
+                print("Error parsing JSON: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
+        }
+        
+        task.resume()
+    }
+
 }
