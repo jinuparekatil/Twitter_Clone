@@ -54,7 +54,8 @@ struct EditProfileView: View {
                         else {
                             self.viewModel.uploadUserData(name: name, bio: bio, website: website, location: location) //save(name: name, bio: bio, website: website, location: location)
                         }
-                        
+                        self.presentationMode.wrappedValue.dismiss()
+
                     } label: {
                         Text("Save")
                             .foregroundStyle(.black)

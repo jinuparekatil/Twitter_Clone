@@ -11,7 +11,8 @@ struct CreateTweetView: View {
     @State var text = ""
     
     @ObservedObject var viewmodel = CreateTweetViewModel()
-    
+    @Environment(\.presentationMode) var presentationMode
+
 //    @Binding var show: Bool
     @State var imagePickerPresented = false
     @State var selectedImage: UIImage?
@@ -20,7 +21,10 @@ struct CreateTweetView: View {
     var body: some View {
         VStack {
             HStack {
-                Button(action: {}, label: {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+
+                }, label: {
                     Text("Cancel")
                 })
                 Spacer()
@@ -28,6 +32,8 @@ struct CreateTweetView: View {
                     if text != "" {
                         
                         self.viewmodel.uploadPost(text: text, image: selectedImage)
+                        self.presentationMode.wrappedValue.dismiss()
+
                     }
                 }, label: {
                     Text("Tweet")
