@@ -12,17 +12,20 @@ struct SearchView: View {
     @State var isEditing = false
     var body: some View {
         VStack {
-            SearchBar(text: $text, isEditing: $isEditing)
-                .padding(.horizontal)
-            if !isEditing {
-                List(0..<9) { i in
-                Search_Cell(tags: "Hello", tweets: String(i))
+            ScrollView {
+                SearchBar(text: $text, isEditing: $isEditing)
+                    .padding(.horizontal)
+                
+                if !isEditing {
+                    List(0..<9) { i in
+                        Search_Cell(tags: "Hello", tweets: String(i))
+                    }
                 }
-            }
-            else {
-                List(0..<9){_ in
-                    
-                    SearchUserCell()
+                else {
+                    List(0..<9){_ in
+                        
+                        SearchUserCell()
+                    }
                 }
             }
         }

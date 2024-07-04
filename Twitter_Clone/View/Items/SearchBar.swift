@@ -33,10 +33,10 @@ struct SearchBar: View {
             }, label: {
                 Text("Cancel")
                     .foregroundStyle(.black)
-                    .padding(.trailing,8)
-                    .transition(.move(edge: .trailing))
-                    .animation(.default, value: isEditing)
             })
+            .padding(.trailing,8)
+            .transition(.move(edge: .trailing))
+            .animation(.default, value: isEditing)
         }
         .onTapGesture {
             isEditing = true
