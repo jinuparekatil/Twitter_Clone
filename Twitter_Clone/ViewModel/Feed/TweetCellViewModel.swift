@@ -11,10 +11,13 @@ class TweetCellViewModel: ObservableObject {
     
     @Published var tweet: Tweet
     @Published var user: User?
+    let currentUser: User
     
-    init(tweet: Tweet) {
+    init(tweet: Tweet, currentUser: User) {
         self.tweet = tweet
+        self.currentUser = currentUser
         self.fetchUser(userId: self.tweet.userId)
+        self.checkIfUserLikedPost()
     }
     
     func fetchUser(userId: String) {
@@ -41,12 +44,23 @@ class TweetCellViewModel: ObservableObject {
         RequestServices.likeTweet(id: self.tweet.id) { result in
             print("tweet has been liked")
         }
+        self.tweet.didLike = true
     }
     
     func unlike() {
         RequestServices.requestDomain = "http://localhost:3000/tweets/\(self.tweet.id)/unlike"
         RequestServices.likeTweet(id: self.tweet.id) { result in
             print("tweet has been liked")
+        }
+        self.tweet.didLike = false
+    }
+    
+    func checkIfUserLikedPost() {
+        if (self.tweet.Likes.contains(self.currentUser.id)) {
+            self.tweet.didLike = true
+        }
+        else {
+            self.tweet.didLike = false
         }
     }
 }

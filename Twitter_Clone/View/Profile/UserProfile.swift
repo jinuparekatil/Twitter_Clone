@@ -235,7 +235,7 @@ struct UserProfile: View {
                     .zIndex(1.0)
                     VStack(spacing: 18 ) {
                         ForEach(viewModel.tweet) { tweet in
-                            TweetCellView(viewModel: TweetCellViewModel(tweet: tweet))
+                            TweetCellView(viewModel: TweetCellViewModel(tweet: tweet,currentUser: AuthViewModel.shared.currentUser!))
                         }
                     }
 //                    VStack(spacing: 18, content: {
