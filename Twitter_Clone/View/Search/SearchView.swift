@@ -10,26 +10,33 @@ import SwiftUI
 struct SearchView: View {
     @State var text = ""
     @State var isEditing = false
+    @ObservedObject var viewModel = SearchViewModel()
+    var users: [User] {
+        self.text.isEmpty ? viewModel.users : viewModel.filteredUsers(text)
+    }
+    
     var body: some View {
         VStack {
             ScrollView {
                 SearchBar(text: $text, isEditing: $isEditing)
                     .padding(.horizontal)
-                
-                if !isEditing {
-                    List(0..<9) { i in
-                        Search_Cell(tags: "Hello", tweets: String(i))
+                LazyVStack {
+                    ForEach(self.users) { user in
+                        NavigationLink {
+                            UserProfile(user: user)
+                        } label: {
+                            
+                            
+                            SearchUserCell(user: user)
+                                .padding(.leading)
+                        }
                     }
                 }
-                else {
-                    List(0..<9){_ in
-                        
-                        SearchUserCell()
-                    }
+                    
                 }
             }
         }
-    }
+    
 }
 
 #Preview {

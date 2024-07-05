@@ -89,17 +89,17 @@ public class AuthServices {
     }
     // Fetch User function
     
-    static func fetchUser(id: String, completion: @escaping(_ result: Result<Data, AutheticationError>)-> Void) {
-        let urlString = URL(string: "http://localhost:3000/users/\(id)")!
-        var urlRequest = URLRequest(url: urlString)
+    static func fetchUser( completion: @escaping(_ result: Result<Data, AutheticationError>)-> Void) {
+        
+        let url = URL(string: requestDomain)!
         let session = URLSession.shared
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        urlRequest.httpMethod = "GET"
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        let task = session.dataTask(with: urlRequest) { data, response, error in
+        let task = session.dataTask(with: request) { data, response, error in
             guard  error == nil else { return }
             
             guard let data = data else {
@@ -111,8 +111,9 @@ public class AuthServices {
             
             do {
                 if let json  = try JSONSerialization.jsonObject(with: data,options: .mutableContainers) as? [String : Any] {
-                    completion(.success(data))
+                    
                 }
+                completion(.success(data))
             } catch {
                 
                 completion(.failure(.invalidCredentials))
