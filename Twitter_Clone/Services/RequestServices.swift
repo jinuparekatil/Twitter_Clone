@@ -220,5 +220,44 @@ public class RequestServices {
         
         task.resume()
     }
+    
+    public static func sendNotification(userName: String, notSenderId: String, notRecieverId: String, notificationType: String,postText: String, completion: @escaping(_ result: [String: Any]?) -> Void) {
+        
+        var params: [String: Any] {
+            return postText.isEmpty ? ["username": userName, "notsenderId": notSenderId, "notRecieverId": notRecieverId , "notificationType": notificationType] as [String: Any] : ["username": userName, "notsenderId": notSenderId, "notRecieverId": notRecieverId , "notificationType": notificationType, "postText":postText] as [String: Any]
+        }
+        let url = URL(string: requestDomain)!
+        let session = URLSession.shared
+        var request = URLRequest(url: url)
+        request.httpMethod =  "POST"
+        
+        do {
+            request.httpBody  = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+        } catch {
+            print(error.localizedDescription)
+        }
+        let token = UserDefaults.standard.string(forKey: "jsonwebtoken")!
+        
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            
+            guard error == nil else { return }
+            
+            guard let data = data else { return }
+            
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String : Any]{
+                    completion(json)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
+    }
 
 }

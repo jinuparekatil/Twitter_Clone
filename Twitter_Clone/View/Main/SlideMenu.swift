@@ -79,7 +79,9 @@ struct SlideMenu: View {
                             MenuButton(title: "Twitter Ads")
                         })
                         Divider()
-                        Button(action: {}, label: {
+                        Button(action: {
+                            AuthViewModel.shared.logout()
+                        }, label: {
                             Text("Settings and privacy")
                                 .foregroundStyle(.black)
                         })
