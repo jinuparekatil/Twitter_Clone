@@ -21,7 +21,7 @@ class ProfileViewModel: ObservableObject {
     func fetchTweets() {
         RequestServices.requestDomain = "http://localhost:3000/tweets/\(self.user.id)"
         
-        RequestServices.fetchTweets { result in
+        RequestServices.fetchData { result in
             switch result {
             case .success(let data):
                 guard let tweet  = try? JSONDecoder().decode([Tweet].self, from: (data as! Data)) else { return }
@@ -42,11 +42,16 @@ class ProfileViewModel: ObservableObject {
     }
     
     func follow() {
+        guard let authUser = AuthViewModel.shared.currentUser else { return }
         RequestServices.requestDomain = "http://localhost:3000/users/\(self.user.id)/follow"
         
         RequestServices.folowingProcess(id: self.user.id) { result in
             print(result)
             print("Followed")
+        }
+        RequestServices.requestDomain = "http://localhost:3000/notifications"
+        RequestServices.sendNotification(userName: authUser.username, notSenderId: authUser.id, notRecieverId: self.user.id, notificationType: NotificationType.follow.rawValue, postText: "") { result in
+            print("FOLLOWED")
         }
         self.user.isFollowed = true
     }

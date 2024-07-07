@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct NotificationCell: View {
     @State var width = UIScreen.main.bounds.width
+    
+    let notification: Notification
     var body: some View {
         VStack {
             Rectangle()
@@ -23,16 +26,20 @@ struct NotificationCell: View {
                     .scaledToFit()
                     .frame(width: 20,height: 20)
                 VStack(alignment: .leading,spacing: 5, content:{
-                    Image("logo")
+                    KFImage(URL(string: "http://localhost:3000/users/\(notification.notSenderId)/avatar"))
+                        .placeholder({
+                            Image("blankpp")
+                                .resizable()
+                        })
                         .resizable()
-                        .scaledToFill()
+                        .scaledToFit()
                         .frame(width: 36,height: 36)
                         .clipShape(Circle())
-                    Text("Jinu ")
+                    Text("\(notification.username) ")
                         .fontWeight(.bold)
                         .foregroundStyle(.primary)
                     +
-                    Text("Followed you")
+                    Text(notification.notificationType.rawValue == "follow" ? NotificationType.follow.notificationMessage : NotificationType.like.notificationMessage)
                         .foregroundStyle(.black)
                     
                 })
@@ -45,6 +52,6 @@ struct NotificationCell: View {
     }
 }
 
-#Preview {
-    NotificationCell()
-}
+//#Preview {
+//    NotificationCell()
+//}

@@ -8,12 +8,12 @@
 import Foundation
 
 
-struct Notification : Decodable, Identifiable {
+struct Notification: Decodable, Identifiable {
     var _id: String
     var id: String {
         return _id
     }
-    var userName: String
+    var username: String
     var notSenderId: String
     var notRecieverId: String
     var postText: String?
@@ -21,16 +21,15 @@ struct Notification : Decodable, Identifiable {
 }
 
 enum NotificationType: String, Decodable {
-    
     case like = "like"
     case follow = "follow"
     
     var notificationMessage: String {
         switch self {
         case .like:
-            return("liked your tweet.")
+            return "liked your tweet."
         case .follow:
-            return("followed you")
+            return "followed you"
         }
     }
 }

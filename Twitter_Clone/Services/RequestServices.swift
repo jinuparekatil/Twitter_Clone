@@ -56,7 +56,7 @@ public class RequestServices {
         task.resume()
     }
     
-    static func fetchTweets(completion: @escaping(_ result: Result<Data?, NetworkError>) -> Void) {
+    static func fetchData(completion: @escaping(_ result: Result<Data?, NetworkError>) -> Void) {
         let url = URL(string: requestDomain)!
         
         let session = URLSession.shared
@@ -75,7 +75,13 @@ public class RequestServices {
             }
             
             guard let data = data else { return }
-            
+            do {
+                if  let json  = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String : Any]{
+               print(json)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
             completion(.success(data))
 
         }
@@ -224,7 +230,7 @@ public class RequestServices {
     public static func sendNotification(userName: String, notSenderId: String, notRecieverId: String, notificationType: String,postText: String, completion: @escaping(_ result: [String: Any]?) -> Void) {
         
         var params: [String: Any] {
-            return postText.isEmpty ? ["username": userName, "notsenderId": notSenderId, "notRecieverId": notRecieverId , "notificationType": notificationType] as [String: Any] : ["username": userName, "notsenderId": notSenderId, "notRecieverId": notRecieverId , "notificationType": notificationType, "postText":postText] as [String: Any]
+            return postText.isEmpty ? ["username": userName, "notSenderId": notSenderId, "notRecieverId": notRecieverId , "notificationType": notificationType] as [String: Any] : ["username": userName, "notSenderId": notSenderId, "notRecieverId": notRecieverId , "notificationType": notificationType, "postText":postText] as [String: Any]
         }
         let url = URL(string: requestDomain)!
         let session = URLSession.shared
